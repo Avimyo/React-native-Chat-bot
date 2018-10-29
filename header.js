@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, Text, View,Image } from 'react-native';
-import {Icon ,Button,Container,Content,Left}from 'native-base'
 export default class Header extends React.Component {
 	render() {
 		return (
@@ -21,7 +20,7 @@ export default class Header extends React.Component {
 		left:0,
 		height:50, 
 		zIndex:-100,
-		backgroundColor:'lightskyblue'
+		backgroundColor:'#243447'
 
 	}}/>
 	</View>
