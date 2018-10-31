@@ -1,11 +1,12 @@
 // //screen to upload the image for the backgroundimport { StyleSheet, Text, View,Image } from 'react-native';
 import React from 'react';
 import { Button, Image, View,StyleSheet,Text,TouchableOpacity,Alert } from 'react-native';
-import { ImagePicker } from 'expo';
+import { ImagePicker,Permissions } from 'expo';
 import Header from './header';
 export default class ImagePickerExample extends React.Component {
   state = {
     image: null,
+  
   };
 
   render() {
@@ -20,7 +21,7 @@ export default class ImagePickerExample extends React.Component {
         <TouchableOpacity
          style={styles.buttonbackground}  onPress={this._pickImage}
         >
-        <Text style={{fontSize:20,color:'white',textAlign:'center'}} >Select Image</Text>
+        <Text style={{fontSize:20,color:'white',textAlign:'center'}} >Select Image </Text>
         </TouchableOpacity>
        
       </View>
@@ -39,6 +40,7 @@ export default class ImagePickerExample extends React.Component {
       this.setState({ image: result.uri });
     }
   };
+    
 }
 const styles = StyleSheet.create({
 			container: {
@@ -65,6 +67,7 @@ const styles = StyleSheet.create({
 				borderRadius:30,
 				justifyContent:'center'
 			},
+		
 			image:{
 				width:200,
 				height:200,
@@ -74,4 +77,5 @@ const styles = StyleSheet.create({
 				left:70
 
 			}
+			
 		});
