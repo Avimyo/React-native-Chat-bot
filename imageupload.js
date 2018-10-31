@@ -1,54 +1,76 @@
-//screen to upload the image for the backgroundimport { StyleSheet, Text, View,Image } from 'react-native';
+// //screen to upload the image for the backgroundimport { StyleSheet, Text, View,Image } from 'react-native';
 import React from 'react';
-import { StyleSheet, Text, View,Image,TouchableOpacity,Alert
-	,ActivityIndicator/*processing indicator*/,Button } from 'react-native';
-	import {Container,Content,Left}from 'native-base'
-	import ImagePicker from 'react-native-customized-image-picker';
+import { Button, Image, View,StyleSheet,Text,TouchableOpacity,Alert } from 'react-native';
+import { ImagePicker } from 'expo';
+import Header from './header';
+export default class ImagePickerExample extends React.Component {
+  state = {
+    image: null,
+  };
 
-	import Header from './header';
-	export default class imageupload extends React.Component {
-		render() {
-			return (
-				<Container>
-				<Text style={styles.heading}>Uploader</Text>
-				<Header/>
-				<View 
-				style={{position:'absolute',
-				top:300,height:30,width:120,left:115,
-				backgroundColor:'#243447',borderRadius:5}}>
-				<TouchableOpacity   >
-				<Text style={{fontSize:20,color:'white',textAlign:'center'}}>Select Image</Text>
-				</TouchableOpacity>
-				</View>
-				</Container>
-				);
-		}
-			chooser(){
-			Alert.alert(
-				'Pick Image:',
-				[
-			{text: 'Pick from camera',},
-          {text: 'Pick from Gallery',},
-          ],
-          { cancelable: false }
-          )
-	}
-		}
-	
+  render() {
+    let { image } = this.state;
 
-	
+    return (
+      <View>
+      <Text style={styles.heading}>Uploader</Text>				
+      <Header/>
+       {image &&
+          <Image source={{ uri: image }} style={styles.image} />}
+        <TouchableOpacity
+         style={styles.buttonbackground}  onPress={this._pickImage}
+        >
+        <Text style={{fontSize:20,color:'white',textAlign:'center'}} >Select Image</Text>
+        </TouchableOpacity>
+       
+      </View>
+    );
+  }
 
-	const styles = StyleSheet.create({
-		container: {
-			flex: 1,
+  _pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      allowsEditing: true,
+      aspect: [4, 3],
+    });
 
-		},
-		heading:{
-			left:125,
-			position:'absolute',
-			top:100,
-			fontSize:20,
+    console.log(result);
+
+    if (!result.cancelled) {
+      this.setState({ image: result.uri });
+    }
+  };
+}
+const styles = StyleSheet.create({
+			container: {
+			 flex: 1, 
+			 alignItems: 'center',
+			  justifyContent: 'center',
+
+			},
+			heading:{
+				left:125,
+				position:'absolute',
+				top:100,
+				fontSize:20,
 
 
-		}
-	});
+			},
+			buttonbackground:{
+				position:'absolute',
+				top:360,
+				height:35,
+				width:140,
+				left:105,
+				backgroundColor:'#243447',
+				borderRadius:30,
+				justifyContent:'center'
+			},
+			image:{
+				width:200,
+				height:200,
+				position:'absolute',
+				top:150,
+				left:70
+
+			}
+		});
