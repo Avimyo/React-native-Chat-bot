@@ -4,7 +4,7 @@ import {createDrawerNavigator}from 'react-navigation'
 import {Icon ,Button,Container,Content,Left}from 'native-base'
 import Homescreen from './Homescreen';
 import imageupload from './imageupload';
-import Header from './header';
+import Header from './Header';
 
 export default class App extends React.Component {
   render() {

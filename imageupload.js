@@ -1,8 +1,9 @@
 // //screen to upload the image for the backgroundimport { StyleSheet, Text, View,Image } from 'react-native';
 import React from 'react';
-import { Button, Image, View,StyleSheet,Text,TouchableOpacity,Alert } from 'react-native';
+import { Button, Image, View,StyleSheet,Text,TouchableOpacity,Alert,AsyncStorage } from 'react-native';
 import { ImagePicker,Permissions } from 'expo';
-import Header from './header';
+import Head from './Header';
+import CacheImage from './cacheimg';
 export default class ImagePickerExample extends React.Component {
   state = {
     image: null,
@@ -16,7 +17,8 @@ export default class ImagePickerExample extends React.Component {
       <View>
       <Text style={styles.heading}>Uploader</Text>				
       <Header/>
-       {image &&
+
+    {image &&
           <Image source={{ uri: image }} style={styles.image} />}
         <TouchableOpacity
          style={styles.buttonbackground}  onPress={this._pickImage}
@@ -31,7 +33,7 @@ export default class ImagePickerExample extends React.Component {
   _pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       allowsEditing: true,
-      aspect: [4, 3],
+      aspect: [1, 1],
     });
 
     console.log(result);
