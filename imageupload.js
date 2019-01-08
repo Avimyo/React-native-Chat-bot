@@ -2,7 +2,11 @@
 import React from 'react';
 import { Button, Image, View,StyleSheet,Text,TouchableOpacity,Alert,AsyncStorage } from 'react-native';
 import { ImagePicker,Permissions } from 'expo';
+<<<<<<< HEAD
 import Head from './Header';
+=======
+import Header from './Header';
+>>>>>>> 0c9300d720544644061d7ce0218ecd488b94568c
 import CacheImage from './cacheimg';
 export default class ImagePickerExample extends React.Component {
   state = {
