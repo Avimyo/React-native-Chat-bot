@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image } from 'react-native';
+import { Image,Text,StyleSheet} from 'react-native';
 import shorthash from 'shorthash';
 import { FileSystem } from 'expo';
 
