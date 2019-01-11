@@ -5,6 +5,7 @@ import { StyleSheet, Text, View,Image,TouchableOpacity,ActivityIndicator/*proces
 import Head from './Header';
 import imageupload from './imageupload';
 import CacheImage from './cacheimg';
+import {Icon} from 'react-native-elements';
 import { GiftedChat } from 'react-native-gifted-chat'
     
 export default class Homescreen extends React.Component {
@@ -17,7 +18,7 @@ export default class Homescreen extends React.Component {
       user: {
         _id: 2,
         name: "Abiral",
-        avatar: "http://www.coderschool.vn/system/instructors/avatar_images/000/000/001/original/kunal.jpg?1531064314"
+        avatar: "https://1.bp.blogspot.com/-FtLycA4WPq0/XDTEJGz4lCI/AAAAAAAAATc/D7P8iYsM2ykCR68uqrQyTeAlJ_zf5MdRACLcBGAs/s1600/Travmyo-logo2.png"
       }
     }
 
@@ -36,6 +37,13 @@ export default class Homescreen extends React.Component {
 		return (
        <View style={styles.container}>
     <Head/>
+    <GiftedChat
+          messages={this.state.messages}
+          onSend={messages => this.onSend(messages)}
+          user={{
+            _id: 1
+          }}
+        />
   
       <KeyboardAvoidingView style={styles.footer} behavior="padding" enabled>
       <TextInput
@@ -45,7 +53,19 @@ export default class Homescreen extends React.Component {
           underlineColorAndroid='transparent'
           /*onChangeText={this.onChangeText}
           value={this.state.name}*/
-        ></TextInput></KeyboardAvoidingView>
+        ></TextInput>
+          
+<Icon
+  reverse
+  name='md-send'
+  type='ionicon'
+  size={10}
+  color='#ddd'
+  onPress={() => console.log('hello')} />
+      </KeyboardAvoidingView>
+       
+    
+
         </View>
 			);
 	}
@@ -72,6 +92,14 @@ const styles = StyleSheet.create({
             borderTopColor: '#ddd',
             zIndex:+100,
              
+          },
+          sendButton:{
+            position:'absolute',
+            bottom:20,
+            right:10,
+            zIndex:110,
+
+
           },
           footer:{
                 position:'absolute',
