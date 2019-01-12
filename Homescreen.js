@@ -1,7 +1,7 @@
 
 //main screen of the appimport React from 'react';
 import React from 'react';
-import { StyleSheet, Text, View,Image,TouchableOpacity,ActivityIndicator/*processing indicator*/,Button,TextInput,KeyboardAvoidingView } from 'react-native';
+import { StyleSheet,Alert, Text, View,Image,TouchableOpacity,ActivityIndicator/*processing indicator*/,Button,TextInput,KeyboardAvoidingView } from 'react-native';
 import Head from './Header';
 import imageupload from './imageupload';
 import CacheImage from './cacheimg';
@@ -36,33 +36,16 @@ export default class Homescreen extends React.Component {
 	render() {
 		return (
        <View style={styles.container}>
-    <Head/>
-    <GiftedChat
+         <Head/> 
+         <GiftedChat
           messages={this.state.messages}
           onSend={messages => this.onSend(messages)}
           user={{
             _id: 1
           }}
         />
+          <KeyboardAvoidingView behavior={'padding'} keyboardVerticalOffset={5}/>
   
-      <KeyboardAvoidingView style={styles.footer} behavior="padding" enabled>
-      <TextInput
-          style={styles.textInput}
-          placeholder="Type a message..."
-          placeholderTextColor='#ddd'
-          underlineColorAndroid='transparent'
-          /*onChangeText={this.onChangeText}
-          value={this.state.name}*/
-        ></TextInput>
-          
-<Icon
-  reverse
-  name='md-send'
-  type='ionicon'
-  size={10}
-  color='#ddd'
-  onPress={() => console.log('hello')} />
-      </KeyboardAvoidingView>
        
     
 
@@ -84,13 +67,14 @@ const styles = StyleSheet.create({
 
           },
           textInput:{
-            alignSelf:'stretch',
+            position:'absolute',
             color:'#ddd',
             height:50,
+            width:500,
             backgroundColor: '#243447',
-            borderTopWidth:2,
+            // borderTopWidth:2,
             borderTopColor: '#ddd',
-            zIndex:+100,
+            zIndex:100,
              
           },
           sendButton:{

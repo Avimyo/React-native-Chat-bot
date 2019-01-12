@@ -20,7 +20,7 @@ export default class Head extends React.Component {
 		right:0,
 		left:0,
 		height:50, 
-		zIndex:-100,
+		zIndex:100,
 		backgroundColor:'#243447'
 
 	}}/>
