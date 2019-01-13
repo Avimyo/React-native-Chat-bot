@@ -6,9 +6,13 @@ import Head from './Header';
 import imageupload from './imageupload';
 import CacheImage from './cacheimg';
 import {Icon} from 'react-native-elements';
-import { GiftedChat } from 'react-native-gifted-chat'
+import { GiftedChat,InputToolbar } from 'react-native-gifted-chat'
     
 export default class Homescreen extends React.Component {
+    InputToolbar (props) {
+     //Add the extra styles via containerStyle
+    return <InputToolbar {...props} containerStyle={{borderTopWidth: 2, borderTopColor: '#da1c5c',borderBottomColor: '#da1c5c'}} />
+  }
    constructor(props) {
     super(props);
     let firstMsg = {
@@ -21,6 +25,7 @@ export default class Homescreen extends React.Component {
         avatar: "https://1.bp.blogspot.com/-FtLycA4WPq0/XDTEJGz4lCI/AAAAAAAAATc/D7P8iYsM2ykCR68uqrQyTeAlJ_zf5MdRACLcBGAs/s1600/Travmyo-logo2.png"
       }
     }
+    
 
     this.state = {
       messages: [firstMsg]
@@ -38,6 +43,7 @@ export default class Homescreen extends React.Component {
        <View style={styles.container}>
          <Head/> 
          <GiftedChat
+           renderInputToolbar={this.InputToolbar} 
           messages={this.state.messages}
           onSend={messages => this.onSend(messages)}
           user={{

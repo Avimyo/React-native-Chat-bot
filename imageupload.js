@@ -3,7 +3,7 @@ import React from 'react';
 import { Button, Image, View,StyleSheet,Text,TouchableOpacity,Alert,AsyncStorage } from 'react-native';
 import { ImagePicker,Permissions } from 'expo';
 import Head from './Header';
-
+import { LinearGradient } from 'expo';
 import CacheImage from './cacheimg';
 export default class ImagePickerExample extends React.Component {
   state = {
@@ -15,17 +15,26 @@ export default class ImagePickerExample extends React.Component {
     let { image } = this.state;
 
     return (
-      <View>
+      <View  style={styles.container}>
       <Text style={styles.heading}>Uploader</Text>				
       <Head/>
 
     {image &&
           <Image source={{ uri: image }} style={styles.image} />}
-        <TouchableOpacity
-         style={styles.buttonbackground}  onPress={this._pickImage}
-        >
+       
+			 <TouchableOpacity style={styles.buttonbackground}  onPress={this._pickImage}><LinearGradient
+		  colors={['#da1c5c','#0b172a']}
+		  start={[0,0]} 
+		  end={[1, 0]}
+          style={{
+						height:35,
+						width:140,
+						borderRadius:30,
+						justifyContent: 'center',
+          }}>
+					
         <Text style={{fontSize:20,color:'white',textAlign:'center'}} >Select Image </Text>
-        </TouchableOpacity>
+				</LinearGradient></TouchableOpacity>
        
       </View>
     );
@@ -48,8 +57,6 @@ export default class ImagePickerExample extends React.Component {
 const styles = StyleSheet.create({
 			container: {
 			 flex: 1, 
-			 alignItems: 'center',
-			  justifyContent: 'center',
 
 			},
 			heading:{
@@ -66,9 +73,7 @@ const styles = StyleSheet.create({
 				height:35,
 				width:140,
 				left:105,
-				backgroundColor:'#243447',
-				borderRadius:30,
-				justifyContent:'center'
+			
 			},
 		
 			image:{
